@@ -3,10 +3,10 @@ import pandas as pd
 import os
 import chromadb
 
-os.makedirs("d:/coding", exist_ok=True)
+
 
 client = chromadb.Client()
-collection = client.create_collection ("patient_records")
+collection = client.create_collection ("healthcare")
 
 patient_id = [f"PT-{i+1:03d}" for i in range(15)]
 first_name = [ "James", "Sarah", "Mohammed", "Emma", "David",
@@ -70,19 +70,18 @@ def patient_to_text(patient):
     """
 
 df=pd.DataFrame(data)
-patient = df.iloc[0]
-df.to_csv("d:/coding/pateintdatabase.csv", index=False)
+df.to_csv("patient_database.csv", index=False)
 
-pateint_document = []
+patient_document = []
 for i in range(15):
     text= patient_to_text(df.iloc[i])
-    pateint_document.append(text)
+    patient_document.append(text)
     print (text)
     print ("="*40)
 
 collection.add(
-    documents = pateint_document,
+    documents = patient_document,
     ids = patient_id
 )
-print (f"Total records found: {len(pateint_document)}")
-print (f"Total record documet store: {collection.count()}")
+print (f"Total records found: {len(patient_document)}")
+print (f"Total record document store: {collection.count()}")
