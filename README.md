@@ -1,4 +1,4 @@
-"# healthcare_ai" 
+
 # 🏥 Medical AI RAG System
 
 A RAG-powered medical assistant built on synthetic 
@@ -34,4 +34,4 @@ patient data using ChromaDB.
 - Semantic search
 
 ## Author
-Alamin — AI Engineer in Training 🚀
+Alamin Mahmud 🚀
